@@ -261,16 +261,24 @@
         let $scrollArea = this.$refs.scrollArea
         let $scrollWrapper = this.$refs.scrollWrapper
 
-        // Get new Elements Size
         let elementSize = {
           // Scroll Area Height and Width
-          scrollAreaHeight: $scrollArea.children[0].clientHeight,
-          scrollAreaWidth: $scrollArea.children[0].clientWidth,
+          scrollAreaHeight: 0,
+          scrollAreaWidth: 0,
 
           // Scroll Wrapper Height and Width
-          scrollWrapperHeight: $scrollWrapper.clientHeight,
-          scrollWrapperWidth: $scrollWrapper.clientWidth,
+          scrollWrapperHeight: 0,
+          scrollWrapperWidth: 0,
         }
+
+        if ($scrollArea && $scrollWrapper) {
+          // Get new Elements Size
+          elementSize.scrollAreaHeight = $scrollArea.children[0].clientHeight
+          elementSize.scrollAreaWidth = $scrollArea.children[0].clientWidth
+          elementSize.scrollWrapperHeight = $scrollWrapper.clientHeight
+          elementSize.scrollWrapperWidth = $scrollWrapper.clientWidth
+        }
+
         return elementSize
       },
 
